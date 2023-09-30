@@ -1,0 +1,51 @@
+mensaje: jueguemos al juego
+elegir entre piedra, papel o tijera
+maquina elige aleatoriamente 
+"""
+import random
+resultado_juego = {
+  "ganadas_user": 0,
+  "ganadas_maquina": 0,
+  "empate": 0,
+    }
+def juego():
+    opciones = ["piedra", "papel", "tijera"]
+    print("Bienvenido al juego ")
+    while resultado_juego["ganadas_user"] != 2 and resultado_juego["ganadas_maquina"] != 2 and resultado_juego["empate"] != 3:
+        jugada_user=input("elige entre piedra papel o tijera: ")
+        jugada_maquina=random.choice(opciones)
+        print("El jugador 1 ha elegido: " + jugada_user)
+        print("La maquina ha elegido: " + jugada_maquina)
+        if jugada_user == jugada_maquina:
+            print("empate")
+            resultado_juego["empate"] += 1
+        if jugada_user == opciones[0] and jugada_maquina == opciones[1]:
+            print("Gana maquina")
+            resultado_juego["ganadas_maquina"] += 1
+            
+        if jugada_user == opciones[0] and jugada_maquina == opciones[2]:
+            print("Gana user")
+            resultado_juego["ganadas_user"] += 1
+        if jugada_user == opciones[1] and jugada_maquina == opciones[2]:
+            print("Gana maquina")
+            resultado_juego["ganadas_maquina"] += 1
+            
+        if jugada_user == opciones[1] and jugada_maquina == opciones[0]:
+            print("Gana user")
+            resultado_juego["ganadas_user"] += 1
+        if jugada_user == opciones[2] and jugada_maquina == opciones[0]:
+            print("Gana maquina")
+            resultado_juego["ganadas_maquina"] += 1
+            
+        if jugada_user == opciones[2] and jugada_maquina == opciones[1]:
+            print("Gana user")
+            resultado_juego["ganadas_user"] += 1
+    if resultado_juego["ganadas_user"] > resultado_juego["ganadas_maquina"]:
+        print("Has ganado la partida ")
+    
+    elif resultado_juego["ganadas_user"] < resultado_juego["ganadas_maquina"]: 
+        print("Ha ganado la maquina ")
+    
+    else:
+        print("Habeis quedado empate")
+juego()
